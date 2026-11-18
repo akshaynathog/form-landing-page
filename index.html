@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>സംസ്ഥാന സമ്മേളനം - കേരളം</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manjari:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --orange: #e87924;
+      --orange-dark: #d46a1a;
+      --text-dark: #1a1a1a;
+      --bg: #f5f6f7;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Manjari', 'Noto Sans Malayalam', system-ui, -apple-system, sans-serif;
+      background: 
+        radial-gradient(70% 45% at 8% 0px, rgba(232, 121, 36, 0.08), rgba(0, 0, 0, 0) 65%),
+        linear-gradient(155deg, #ffffff, #f3f5f7);
+      color: var(--text-dark);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px 16px;
+    }
+
+    .card {
+      position: relative;
+      width: 100%;
+      max-width: 85%;
+      aspect-ratio: 16 / 10;
+      /* max-height: 90vh; */
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(0, 0, 0, 0.04);
+      background: #0a1628;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center right;
+    }
+
+    .hero-shade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        rgba(8, 20, 40, 0.92) 0%,
+        rgba(8, 20, 40, 0.78) 35%,
+        rgba(8, 20, 40, 0.35) 55%,
+        rgba(8, 20, 40, 0.1) 70%,
+        transparent 85%
+      );
+      pointer-events: none;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 48px 40px 48px 56px;
+      max-width: 520px;
+      color: #fff;
+    }
+
+    .home-org {
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      opacity: 0.9;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .home-org::before {
+      content: "";
+      display: inline-block;
+      width: 28px;
+      height: 3px;
+      background: var(--orange);
+      border-radius: 2px;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 18px;
+      letter-spacing: 0.04em;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .home-date {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .home-date::before {
+      content: "";
+      width: 3px;
+      height: 1.1em;
+      background: var(--orange);
+      border-radius: 2px;
+    }
+
+    .home-venue {
+      font-size: 1rem;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 28px;
+      max-width: 380px;
+    }
+
+    .home-location-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      font-size: 0.95rem;
+      margin-bottom: 28px;
+      transition: color 0.2s;
+    }
+
+    .home-location-link:hover {
+      color: var(--orange);
+    }
+
+    .home-location-link svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .home-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--orange);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05rem;
+      padding: 14px 28px;
+      border-radius: 12px;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 4px 14px rgba(232, 121, 36, 0.35);
+      width: fit-content;
+    }
+
+    .home-cta:hover {
+      background: var(--orange-dark);
+      transform: translateY(-1px);
+    }
+
+    .home-cta svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    /* Responsive */
+   
+/* Tablet and mobile responsive design */
+
+@media (max-width: 1024px) {
+  body {
+    padding: 20px;
+  }
+
+  .card {
+    max-width: 100%;
+    aspect-ratio: 16 / 10;
+  }
+
+  .hero-copy {
+    padding: 36px;
+    max-width: 65%;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+  html,
+  body {
+    min-height: 100%;
+    height: auto;
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    min-height: 100svh;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 520px;
+    aspect-ratio: auto;
+    min-height: 680px;
+    height: auto;
+    border-radius: 20px;
+  }
+
+  .hero-bg {
+    object-fit: cover;
+    object-position: 65% center;
+  }
+
+  .hero-shade {
+    background: linear-gradient(
+      180deg,
+      rgba(8, 20, 40, 0.45) 0%,
+      rgba(8, 20, 40, 0.65) 30%,
+      rgba(8, 20, 40, 0.88) 65%,
+      rgba(8, 20, 40, 0.97) 100%
+    );
+  }
+
+  .hero-copy {
+    width: 100%;
+    max-width: 100%;
+    min-height: 680px;
+    height: auto;
+    justify-content: flex-end;
+    padding: 32px 26px 36px;
+  }
+
+  .home-org {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 9vw, 2.7rem);
+    line-height: 1.2;
+    margin-bottom: 18px;
+  }
+
+  .home-date {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  .home-venue {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 18px;
+  }
+
+  .home-location-link {
+    font-size: 0.9rem;
+    margin-bottom: 22px;
+  }
+
+  .home-cta {
+    font-size: 1rem;
+    padding: 13px 22px;
+    border-radius: 10px;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 380px) {
+  body {
+    padding: 10px;
+  }
+
+  .card {
+    min-height: 620px;
+    border-radius: 16px;
+  }
+
+  .hero-copy {
+    min-height: 620px;
+    padding: 24px 18px 28px;
+  }
+
+  h1 {
+    font-size: 1.85rem;
+  }
+
+  .home-date {
+    font-size: 0.95rem;
+  }
+
+  .home-venue {
+    font-size: 0.88rem;
+  }
+
+  .home-cta {
+    font-size: 0.95rem;
+    padding: 12px 18px;
+  }
+}
+
+/* Landscape mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  body {
+    align-items: flex-start;
+  }
+
+  .card {
+    min-height: 600px;
+  }
+
+  .hero-copy {
+    min-height: 600px;
+  }
+}
+
+
+.home-location-link,
+.home-cta {
+  min-height: 44px;
+}
+
+.home-cta {
+  justify-content: center;
+}
+
+a:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+}
+
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img 
+      class="hero-bg" 
+      src="./homeworkdirartifactsorganization-tree.png" 
+      alt="Organization Tree - Rashtriya Swayamsevak Sangh and affiliated organizations"
+    >
+    <div class="hero-shade" aria-hidden="true"></div>
+    
+    <div class="hero-copy">
+      <p class="home-org">ഭാരതീയ മസ്ദൂർ സംഘ്</p>
+      <p class="hero-eyebrow">കേരളം</p>
+      
+      <h1>സംസ്ഥാന<br>സമ്മേളനം-<br>കേരളം</h1>
+      
+      <p class="home-date">2027 ഫെബ്രുവരി 12, 13, 14</p>
+      
+      <p class="home-venue">
+സ്വർഗീയ ജി.കെ. അജിത്ത് നഗർ , (ജോഷ് പവലിയൻ ഓഡിറ്റോറിയം, തൊടുപുഴ)
+      </p>
+      
+      <a 
+  class="home-location-link"
+  href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x3b07c3e07a9c346b:0x9bad39ac557617ff?entry=gemini&utm_source=gemini&utm_campaign=gem-default"
+  target="_blank"
+  rel="noopener noreferrer"
+  style="font-size: 20px;"
+>
+  <svg aria-hidden="true" viewBox="0 0 24 24">
+    <path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"></path>
+    <circle cx="12" cy="10" r="2.2"></circle>
+  </svg>
+  ലൊക്കേഷൻ കാണുക
+</a>
+      
+      <a class="home-cta" href="https://forms.gle/WfXQe2MjySDgELSBA"
+       style="font-size: 25px;">
+        
+        ഫോം പൂരിപ്പിക്കുക
+        <svg aria-hidden="true" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9"></circle>
+          <path d="M8 12h8m-4-4 4 4-4 4"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
